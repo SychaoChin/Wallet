@@ -14,8 +14,6 @@ import com.google.gson.Gson
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var transactionArrayList: ArrayList<Transaction>
-    lateinit var notificationArrayList: ArrayList<Notification>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -56,20 +54,20 @@ class MainActivity : AppCompatActivity() {
 
 
         //add test transactions
-//        val transactions = arrayListOf<Transaction>()
-//        transactions.add(Transaction(1, "Transaction 1",500.00 , "https://cdn.discordapp.com/emojis/949150188197531648.webp?size=128&quality=lossless"))
-//        transactions.add(Transaction(2, "Transaction 2", 1000.00,"https://cdn.discordapp.com/emojis/948911767310975037.webp?size=128&quality=lossless"))
-//        transactions.add(Transaction(3, "Transaction 3", 1500.00,"https://cdn.discordapp.com/emojis/948911453321179137.webp?size=128&quality=lossless"))
-//        transactions.add(Transaction(4, "Transaction 4",500.00 , "https://cdn.discordapp.com/emojis/949150188197531648.webp?size=128&quality=lossless"))
-//        transactions.add(Transaction(5, "Transaction 5", 1000.00,"https://cdn.discordapp.com/emojis/948911767310975037.webp?size=128&quality=lossless"))
-//        transactions.add(Transaction(6, "Transaction 6", 1500.00,"https://cdn.discordapp.com/emojis/948911453321179137.webp?size=128&quality=lossless"))
-//        val gson = Gson()
-//        val json = gson.toJson(transactions)
-//        val sharedPref = getSharedPreferences("transactions_list", Context.MODE_PRIVATE)
-//        val editor = sharedPref.edit()
-//        editor.clear()
-//        editor.putString("transactions", json)
-//        editor.apply()
+        val transactions = arrayListOf<Transaction>()
+        transactions.add(Transaction(1, "Transaction 1",500.00 , "https://cdn.discordapp.com/emojis/949150188197531648.webp?size=128&quality=lossless"))
+        transactions.add(Transaction(2, "Transaction 2", 1000.00,"https://cdn.discordapp.com/emojis/948911767310975037.webp?size=128&quality=lossless"))
+        transactions.add(Transaction(3, "Transaction 3", 1500.00,"https://cdn.discordapp.com/emojis/948911453321179137.webp?size=128&quality=lossless"))
+        transactions.add(Transaction(4, "Transaction 4",500.00 , "https://cdn.discordapp.com/emojis/949150188197531648.webp?size=128&quality=lossless"))
+        transactions.add(Transaction(5, "Transaction 5", 1000.00,"https://cdn.discordapp.com/emojis/948911767310975037.webp?size=128&quality=lossless"))
+        transactions.add(Transaction(6, "Transaction 6", 1500.00,"https://cdn.discordapp.com/emojis/948911453321179137.webp?size=128&quality=lossless"))
+        val gson1 = Gson()
+        val json1 = gson1.toJson(transactions)
+        val sharedPref1 = getSharedPreferences("transactions_list", Context.MODE_PRIVATE)
+        val editor1 = sharedPref1.edit()
+        editor1.clear()
+        editor1.putString("transactions", json1)
+        editor1.apply()
 
     }
 
