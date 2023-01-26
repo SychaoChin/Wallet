@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
 
 // hello world
-
+//Pitou Bruh Osja
 //chi hao cute
 
         setCurrentFragment(firstFragment)
