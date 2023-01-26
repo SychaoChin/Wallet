@@ -3,13 +3,237 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChartFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".ChartFragment"
+    android:theme="@style/Theme.MaterialComponents.DayNight.Bridge">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tranSac_Back_Button"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/back"/>
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScroll"
+        android:layout_below="@+id/tranSac_Back_Button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="50dp"
-        android:text="Chart" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4">
+                <TextView
+                    android:id="@+id/welBack_TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+
+                    android:text="Transaction"
+                    android:textStyle="bold"
+                    android:textSize="45dp"
+                    android:textColor="@android:color/black"/>
+                <TextView
+                    android:id="@+id/welcome_username"
+                    android:layout_below="@+id/welBack_TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:text="Summary"
+                    android:textStyle="bold"
+                    android:textSize="45dp"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="5dp"
+                android:weightSum="2">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/online_shop"
+                    app:shapeAppearanceOverlay="@style/RoundCornerImage"
+                    tools:ignore="ImageContrastCheck" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="This Month"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Transactions"
+                        android:textSize="18sp"
+
+                        android:textColor="@color/black"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="2">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:drawableLeft="@drawable/dollar"
+            android:text="6000"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="#00BCD4"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Sent"
+            android:textSize="18dp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:drawableLeft="@drawable/dollar"
+            android:text="4500"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="#00BCD4"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Received"
+            android:textSize="18dp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+</LinearLayout>
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@android:color/black"
+                android:text="Last Transaction"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="10dp"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal"
+                android:background="@drawable/layout_background1"
+
+                >
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/transaction_info_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/download"
+                    app:shapeAppearanceOverlay="@style/RoundCornerImage"
+                    tools:ignore="ImageContrastCheck" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@android:color/black"
+                        android:text="John Smith"
+                        android:textStyle="bold"
+                        android:textSize="25dp"/>
+                    <TextView
+                        android:id="@+id/balanceNum"
+                        android:layout_below="@+id/balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#E91E63"
+                        android:text="-345$"
+                        android:textSize="20sp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/minuteUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:textColor="@android:color/black"
+                    android:text="10 Min ago"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@android:color/black"
+                android:text="All Transactions"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/upcoming_payment_chart_View"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="10dp"
+                android:clipToPadding="false"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
 </FrameLayout>

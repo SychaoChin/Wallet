@@ -1,59 +1,72 @@
 package com.example.wallet
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wallet.adapter.send_money_adapter
+import com.example.wallet.adapter.upcoming_payment_adapter
+import com.example.wallet.databinding.FragmentChartBinding
+import com.example.wallet.databinding.FragmentHomeBinding
+import com.example.wallet.model.Transaction
+import org.json.JSONArray
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ChartFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ChartFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+    private var _binding: FragmentChartBinding? = null
+    private val binding get() = _binding!!
+    val transactions = arrayListOf<Transaction>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chart, container, false)
-    }
+        _binding = FragmentChartBinding.inflate(inflater, container, false)
+//        binding.tranSacBackButton.setOnClickListener{
+//            val transaction = activity?.supportFragmentManager?.beginTransaction()
+//            val secondFragment=HomeFragment()
+//            if (transaction != null) {
+//                transaction.replace(R.id.flfragment, secondFragment)
+//                transaction.disallowAddToBackStack()
+//                transaction.commit()
+//            }
+//        }
 
+
+        val sharedPref = activity?.getSharedPreferences("transactions_list", Context.MODE_PRIVATE)
+        val json = sharedPref?.getString("transactions", "")
+        if (json != null) {
+            if (json.isNotEmpty()) {
+                transactions.clear()
+                val jsonArray = JSONArray(json)
+                for (i in 0 until jsonArray.length()) {
+                    val jsonObject = jsonArray.getJSONObject(i)
+                    val icon = jsonObject.getString("icon")
+                    val id = jsonObject.getInt("id")
+                    val money = jsonObject.getDouble("money")
+                    val name = jsonObject.getString("name")
+                    transactions.add(Transaction(id, name, money, icon))
+                }
+            }
+        }
+        binding.upcomingPaymentChartView.layoutManager = GridLayoutManager(this.activity, 1)
+        binding.upcomingPaymentChartView.adapter = upcoming_payment_adapter(this.activity, transactions)
+        return binding.root
+    }
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ChartFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             ChartFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
             }
     }
 }
+
+
+
+
