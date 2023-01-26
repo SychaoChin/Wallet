@@ -19,8 +19,6 @@ import com.example.wallet.R
 import com.example.wallet.TransactionInfoFragment
 import com.example.wallet.model.Transaction
 
-
-
 internal class upcoming_payment_adapter(
     var context: FragmentActivity?,
     var arrayList: ArrayList<Transaction>,
