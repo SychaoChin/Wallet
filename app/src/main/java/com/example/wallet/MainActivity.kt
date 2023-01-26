@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         val forthFragment=NotificationFragment()
         //val thirdFragment=ThirdFragment()
 
+
+// hello world
+
 //chi hao cute
 
         setCurrentFragment(firstFragment)

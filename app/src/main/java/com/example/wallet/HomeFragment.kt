@@ -34,7 +34,11 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
 
+
+//hello
+
         //Hello There
+
             // First, it uses a binding object to inflate the layout for the fragment.
             val sharedPref = activity?.getSharedPreferences("transactions_list", Context.MODE_PRIVATE)
             val json = sharedPref?.getString("transactions", "")
