@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import androidx.fragment.app.Fragment
+import com.example.wallet.model.Notification
 import com.example.wallet.model.Transaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
@@ -14,6 +15,7 @@ import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
     lateinit var transactionArrayList: ArrayList<Transaction>
+    lateinit var notificationArrayList: ArrayList<Notification>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,12 +24,6 @@ class MainActivity : AppCompatActivity() {
         val secondFragment=UserPageFragment()
         val thirdFragment=ChartFragment()
         val forthFragment=NotificationFragment()
-        //val thirdFragment=ThirdFragment()
-
-
-// hello world
-//Pitou Bruh Osja
-//chi hao cute
 
         setCurrentFragment(firstFragment)
 
@@ -41,6 +37,22 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        //add test notification
+        val notifications = arrayListOf<Notification>()
+        notifications.add(Notification("Transaction Success","https://media.discordapp.net/attachments/787991185427922945/1068084096758198382/tick.png" , "We have successfully received your payment for ..."))
+        notifications.add(Notification("Transaction Failed", "https://media.discordapp.net/attachments/787991185427922945/1068083396544311306/close.png","We cannot proceed your transaction now. Please try again later."))
+        notifications.add(Notification("Transaction Report", "https://media.discordapp.net/attachments/787991185427922945/1068083396863070248/history.png","You can see your transaction history in this app."))
+        notifications.add(Notification("Transaction Success","https://media.discordapp.net/attachments/787991185427922945/1068084096758198382/tick.png" , "We have successfully received your payment for ..."))
+        notifications.add(Notification("Transaction Failed", "https://media.discordapp.net/attachments/787991185427922945/1068083396544311306/close.png","We cannot proceed your transaction now. Please try again later."))
+        notifications.add(Notification("Transaction Report", "https://media.discordapp.net/attachments/787991185427922945/1068083396863070248/history.png","You can see your transaction history in this app."))
+        val gson = Gson()
+        val json = gson.toJson(notifications)
+        val sharedPref = getSharedPreferences("notifications_list", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.clear()
+        editor.putString("notifications", json)
+        editor.apply()
 
 
         //add test transactions

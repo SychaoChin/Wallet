@@ -3,13 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotificationFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".NotificationFragment"
+    android:background="@color/white">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginTop="10dp">
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="Notification"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:text="A place to see your activity and transaction notifications" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notification_View"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="50dp"
-        android:text="Notification" />
-
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/notification_layout"
+        android:layout_marginHorizontal="10dp"/>
+</LinearLayout>
 </FrameLayout>
