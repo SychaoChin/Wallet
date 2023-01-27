@@ -1,19 +1,12 @@
 package com.example.wallet
 
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils.replace
-import android.view.View
-import android.widget.AdapterView
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wallet.model.Notification
-import com.example.wallet.model.Transaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.gson.Gson
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,42 +14,51 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val firstFragment=HomeFragment()
-        val secondFragment=UserPageFragment()
-        val thirdFragment=ChartFragment()
-        val forthFragment=NotificationFragment()
+        val homeFragment = HomeFragment()
+        val userPageFragment = UserPageFragment()
+        val chartFragment = ChartFragment()
+        val notificationFragment = NotificationFragment()
 
-        setCurrentFragment(firstFragment)
+        setCurrentFragment(homeFragment)
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemReselectedListener { item ->
             when (item.itemId) {
                 R.id.homeFragment -> {
-                if(firstFragment.isAdded() && firstFragment.isVisible()){
-                    val nestedScrollView = firstFragment.view?.findViewById<NestedScrollView>(R.id.nestedScroll)
-                    nestedScrollView?.postDelayed( { nestedScrollView.smoothScrollTo(0, 0) }, 100)
+                    if (homeFragment.isAdded() && homeFragment.isVisible()) {
+                        val nestedScrollView =
+                            homeFragment.view?.findViewById<NestedScrollView>(R.id.nestedScroll)
+                        nestedScrollView?.postDelayed(
+                            { nestedScrollView.smoothScrollTo(0, 0) },
+                            100
+                        )
+                    }
                 }
-            }
-            R.id.chartFragment -> {
-            if(thirdFragment.isAdded() && thirdFragment.isVisible()){
-                val nestedScrollView = thirdFragment.view?.findViewById<NestedScrollView>(R.id.chart_nestedScroll)
-                nestedScrollView?.postDelayed({ nestedScrollView.smoothScrollTo(0, 0) }, 100)
-            }
-        }
+                R.id.chartFragment -> {
+                    if (chartFragment.isAdded() && chartFragment.isVisible()) {
+                        val nestedScrollView =
+                            chartFragment.view?.findViewById<NestedScrollView>(R.id.chart_nestedScroll)
+                        nestedScrollView?.postDelayed(
+                            { nestedScrollView.smoothScrollTo(0, 0) },
+                            100
+                        )
+                    }
+                }
                 R.id.notificationFragment -> {
-                    if(forthFragment.isAdded() && forthFragment.isVisible()){
-                        val recyclerView = forthFragment.view?.findViewById<RecyclerView>(R.id.notification_View)
+                    if (notificationFragment.isAdded() && notificationFragment.isVisible()) {
+                        val recyclerView =
+                            notificationFragment.view?.findViewById<RecyclerView>(R.id.notification_View)
                         recyclerView?.post { recyclerView.scrollToPosition(0) }
                     }
-               }
+                }
             }
         }
         bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.homeFragment->setCurrentFragment(firstFragment)
-                R.id.userPageFragment->setCurrentFragment(secondFragment)
-                R.id.chartFragment->setCurrentFragment(thirdFragment)
-                R.id.notificationFragment->setCurrentFragment(forthFragment)
+            when (it.itemId) {
+                R.id.homeFragment -> setCurrentFragment(homeFragment)
+                R.id.userPageFragment -> setCurrentFragment(userPageFragment)
+                R.id.chartFragment -> setCurrentFragment(chartFragment)
+                R.id.notificationFragment -> setCurrentFragment(notificationFragment)
             }
             true
         }
@@ -111,9 +113,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun setCurrentFragment(fragment:Fragment)=
+    private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flfragment,fragment)
+            replace(R.id.flfragment, fragment)
             commit()
         }
 
