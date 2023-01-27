@@ -25,27 +25,25 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemReselectedListener { item ->
             when (item.itemId) {
                 R.id.homeFragment -> {
-                    if (homeFragment.isAdded() && homeFragment.isVisible()) {
+                    if (homeFragment.isAdded && homeFragment.isVisible) {
                         val nestedScrollView =
                             homeFragment.view?.findViewById<NestedScrollView>(R.id.nestedScroll)
                         nestedScrollView?.postDelayed(
-                            { nestedScrollView.smoothScrollTo(0, 0) },
-                            100
+                            { nestedScrollView.smoothScrollTo(0, 0) }, 100
                         )
                     }
                 }
                 R.id.chartFragment -> {
-                    if (chartFragment.isAdded() && chartFragment.isVisible()) {
+                    if (chartFragment.isAdded && chartFragment.isVisible) {
                         val nestedScrollView =
                             chartFragment.view?.findViewById<NestedScrollView>(R.id.chart_nestedScroll)
                         nestedScrollView?.postDelayed(
-                            { nestedScrollView.smoothScrollTo(0, 0) },
-                            100
+                            { nestedScrollView.smoothScrollTo(0, 0) }, 100
                         )
                     }
                 }
                 R.id.notificationFragment -> {
-                    if (notificationFragment.isAdded() && notificationFragment.isVisible()) {
+                    if (notificationFragment.isAdded && notificationFragment.isVisible) {
                         val recyclerView =
                             notificationFragment.view?.findViewById<RecyclerView>(R.id.notification_View)
                         recyclerView?.post { recyclerView.scrollToPosition(0) }
