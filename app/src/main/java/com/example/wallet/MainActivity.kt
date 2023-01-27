@@ -17,8 +17,6 @@ import com.google.gson.Gson
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var transactionArrayList: ArrayList<Transaction>
-    lateinit var notificationArrayList: ArrayList<Notification>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -86,6 +84,7 @@ class MainActivity : AppCompatActivity() {
 
 
         //add test transactions
+
 //        val transactions = arrayListOf<Transaction>()
 //        transactions.add(Transaction(1, "Transaction 1",500.00 , "https://cdn.discordapp.com/emojis/949150188197531648.webp?size=128&quality=lossless"))
 //        transactions.add(Transaction(2, "Transaction 2", 1000.00,"https://cdn.discordapp.com/emojis/948911767310975037.webp?size=128&quality=lossless"))
@@ -112,6 +111,7 @@ class MainActivity : AppCompatActivity() {
 //        //editor.clear()
 //        editor.putString("transactions", json)
 //        editor.apply()
+
 
     }
 
