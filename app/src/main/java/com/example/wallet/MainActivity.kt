@@ -31,20 +31,15 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemReselectedListener { item ->
             when (item.itemId) {
-//                R.id.homeFragment -> firstFragment.view?.findViewById<RecyclerView>(R.id.upcoming_payment_View)?.scrollToPosition(0)
-//                R.id.chartFragment -> thirdFragment.view?.findViewById<RecyclerView>(R.id.upcoming_payment_chart_View)?.scrollToPosition(0)
-//                R.id.notificationFragment -> forthFragment.view?.findViewById<RecyclerView>(R.id.notification_View)?.scrollToPosition(0)
                 R.id.homeFragment -> {
                 if(firstFragment.isAdded() && firstFragment.isVisible()){
                     val nestedScrollView = firstFragment.view?.findViewById<NestedScrollView>(R.id.nestedScroll)
-                    //val recyclerView = firstFragment.view?.findViewById<RecyclerView>(R.id.upcoming_payment_View)
                     nestedScrollView?.postDelayed( { nestedScrollView.smoothScrollTo(0, 0) }, 100)
                 }
             }
             R.id.chartFragment -> {
             if(thirdFragment.isAdded() && thirdFragment.isVisible()){
                 val nestedScrollView = thirdFragment.view?.findViewById<NestedScrollView>(R.id.chart_nestedScroll)
-                //val recyclerView = thirdFragment.view?.findViewById<RecyclerView>(R.id.upcoming_payment_chart_View)
                 nestedScrollView?.postDelayed({ nestedScrollView.smoothScrollTo(0, 0) }, 100)
             }
         }
