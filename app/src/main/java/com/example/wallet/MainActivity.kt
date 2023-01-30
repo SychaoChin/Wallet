@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        //test
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.homeFragment -> setCurrentFragment(homeFragment)
